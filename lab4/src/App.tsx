@@ -3,8 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import Layout from "./components/Layout/Layout";
 import { INITIAL_TASKS } from "./data/initialTasks";
 import type { Task } from "./types/task";
-// Розкоментуємо ці імпорти на Етапах 5-7, коли створимо самі сторінки:
-// import TasksPage from "./pages/TasksPage/TasksPage";
+import TasksPage from "./pages/TasksPage/TasksPage";
 // import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
 // import NewTaskPage from "./pages/NewTaskPage/NewTaskPage";
 
@@ -22,7 +21,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/tasks" replace />} />
-          {/* Маршрути tasks / tasks/new / tasks/:id додамо на Етапах 5-7 */}
+          <Route path="tasks" element={<TasksPage tasks={tasks} onDelete={deleteTask} />} />
+          {/* tasks/new та tasks/:id додамо на Етапах 6-7 */}
         </Route>
       </Routes>
     </BrowserRouter>
