@@ -1,24 +1,9 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Вивчити useQuery",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "title": "Реалізувати useMutation",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "title": "Налаштувати інвалідацію кешу",
-      "completed": true
-    },
-    {
-      "title": "1234",
+      "title": "12345",
       "completed": false,
-      "id": 4
+      "id": 3
     }
   ]
 }
