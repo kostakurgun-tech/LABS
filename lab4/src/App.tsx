@@ -1,5 +1,30 @@
-function App() {
-  return <div>Hello Lab 4</div>;
-}
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import Layout from "./components/Layout/Layout";
+import { INITIAL_TASKS } from "./data/initialTasks";
+import type { Task } from "./types/task";
+// Розкоментуємо ці імпорти на Етапах 5-7, коли створимо самі сторінки:
+// import TasksPage from "./pages/TasksPage/TasksPage";
+// import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
+// import NewTaskPage from "./pages/NewTaskPage/NewTaskPage";
 
-export default App;
+export default function App() {
+  const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
+
+  const addTask = (task: Task) => setTasks((prev) => [...prev, task]);
+  const deleteTask = (id: string) =>
+    setTasks((prev) => prev.filter((t) => t.id !== id));
+  const updateTask = (updated: Task) =>
+    setTasks((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/tasks" replace />} />
+          {/* Маршрути tasks / tasks/new / tasks/:id додамо на Етапах 5-7 */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
