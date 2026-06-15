@@ -4,7 +4,7 @@ import Layout from "./components/Layout/Layout";
 import { INITIAL_TASKS } from "./data/initialTasks";
 import type { Task } from "./types/task";
 import TasksPage from "./pages/TasksPage/TasksPage";
-// import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
+import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
 // import NewTaskPage from "./pages/NewTaskPage/NewTaskPage";
 
 export default function App() {
@@ -22,7 +22,11 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/tasks" replace />} />
           <Route path="tasks" element={<TasksPage tasks={tasks} onDelete={deleteTask} />} />
-          {/* tasks/new та tasks/:id додамо на Етапах 6-7 */}
+          <Route
+            path="tasks/:id"
+            element={<TaskDetailPage tasks={tasks} onUpdate={updateTask} onDelete={deleteTask} />}
+          />
+          {/* tasks/new додамо на Етапі 7 */}
         </Route>
       </Routes>
     </BrowserRouter>
