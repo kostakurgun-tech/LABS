@@ -1,23 +1,12 @@
-import TaskCard from "./components/TaskCard/TaskCard";
-import type { Task } from "./types/task";
-
-const mockTask: Task = {
-  id: "1",
-  title: "Тестова задача",
-  description: "Перевірка відображення картки",
-  status: "todo",
-  priority: "high",
-  createdAt: new Date(),
-};
+import TaskForm from "./components/TaskForm/TaskForm";
+import type { TaskFormData } from "./components/TaskForm/TaskForm";
 
 function App() {
-  return (
-    <TaskCard
-      task={mockTask}
-      onDelete={(id) => console.log("delete", id)}
-      onStatusChange={(id, status) => console.log("status", id, status)}
-    />
-  );
+  const handleSubmit = (data: TaskFormData) => {
+    console.log("Нова задача:", data);
+  };
+
+  return <TaskForm onSubmit={handleSubmit} />;
 }
 
 export default App;
